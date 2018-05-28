@@ -16,6 +16,7 @@
         android:textSize="40sp"
         android:text="60"
         android:id="@+id/score"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textSize="26sp"
+        android:textSize="32sp"
         android:layout_above="@id/guess"
         android:id="@+id/prompt"
         android:layout_marginBottom="25dp"/>
@@ -41,6 +42,7 @@
         android:inputType="textCapCharacters"
         android:hint="Give Your Best Guess"
         android:textAlignment="center"
+        android:textSize="22sp"
         android:id="@+id/guess"/>
 
     <Button
@@ -71,6 +73,5 @@
         android:layout_marginTop="30dp"
         android:src="@drawable/hangman0"
         android:id="@+id/stages"/>
-
 
 </RelativeLayout>

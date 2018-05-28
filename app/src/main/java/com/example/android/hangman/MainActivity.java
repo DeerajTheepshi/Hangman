@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
     Button check;
     ImageView stage;
 
-    String[] words = {"wakeful","jittery","plants","delicate","melodic"
-                        ,"quilt","science","wonder","miss","pencil"
+    String[] words = {"water","juice","plants","spider","winter"
+                        ,"money","science","wonder","miss","tea"
                         , "finger","hour","empty","kind","song"
                         , "place","bird","fear","mute","week"};
     String word = words[new Random().nextInt(20)].toUpperCase();
@@ -58,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
         stage = (ImageView) findViewById(R.id.stages);
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         prefE = pref.edit();
-        Log.v("kaala",word);
 
         prev_high_score = pref.getInt("prevHighScore",0);
         prevHigh.setText(String.valueOf(prev_high_score));
+
 
         encrypt(word);
 
@@ -84,14 +84,14 @@ public class MainActivity extends AppCompatActivity {
         root.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                cur_score=40;curScore.setText(String.valueOf(cur_score));cur_wrong=0;
+                cur_score=60;curScore.setText(String.valueOf(cur_score));cur_wrong=0;
                 prev_high_score=pref.getInt("prevHighScore",0);prevHigh.setText(String.valueOf(prev_high_score));
                 stage.setImageDrawable(getResources().getDrawable(id[0]));
                 guess.setEnabled(true);
                 usedLetters.setText("");
                 ques.setText("");
                 word = words[new Random().nextInt(20)].toUpperCase();
-                Log.v("kaala",word);
+                wrong_guesses.clear();
                 encrypt(word);
                 return false;
 
@@ -131,13 +131,15 @@ public class MainActivity extends AppCompatActivity {
                     ques.append(String.valueOf(current.charAt(i)));
             }
             if (ques.getText().toString().equals(word)) {
-                makeToast("YEAH ! YOU FOUND IT");
                 if(cur_score>prev_high_score){
                     prevHigh.setText(String.valueOf(cur_score));
                     prev_high_score=cur_score;
                     prefE.putInt("prevHighScore",prev_high_score);
                     prefE.commit();
+                    makeToast("NEW HIGH SCORE!!");
                 }
+                else
+                    makeToast("YEAH ! YOU FOUND IT");
                 guess.setEnabled(false);
             }
         }
