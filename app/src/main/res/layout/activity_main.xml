@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/backdrop"
+    android:id="@+id/root">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:textSize="40sp"
+        android:text="60"
+        android:id="@+id/score"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/score"
+        android:textSize="22sp"
+        android:text="0"
+        android:id="@+id/highScore" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="26sp"
+        android:layout_above="@id/guess"
+        android:id="@+id/prompt"
+        android:layout_marginBottom="25dp"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:inputType="textCapCharacters"
+        android:hint="Give Your Best Guess"
+        android:textAlignment="center"
+        android:id="@+id/guess"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reveal"
+        android:textColor="@android:color/black"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/guess"
+        android:id="@+id/check"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/check"
+        android:hint="No Wrong Guess So Far"
+        android:textSize="18sp"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:id="@+id/used"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/used"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/hangman0"
+        android:id="@+id/stages"/>
+
+
+</RelativeLayout>

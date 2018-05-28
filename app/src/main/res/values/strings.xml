@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Hangman</string>
+    <string name="rules">RULES OF HANGMAN \n\n\n 1. A word is hidden which the user is supposed to find by guessing one letter at a time. \n\n 2. Every Wrong
+                        guess will result in a negative score of -5. \n\n 3. The maximum points one can get is 60 , ie..12 wrong guesses are allowed. \n\n 4. Use
+                        long press to reset the game at any point of time. \n\n\n\n\n SAVE THE HANGMAN</string>
+</resources>
