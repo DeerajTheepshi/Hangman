@@ -20,7 +20,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView ques;
+    TextView ques;                                                          //initializing Global Variables
     TextView curScore;
     TextView prevHigh;
     TextView usedLetters;
@@ -29,14 +29,14 @@ public class MainActivity extends AppCompatActivity {
     Button check;
     ImageView stage;
 
-    String[] words = {"water","juice","plants","spider","winter"
+    String[] words = {"water","juice","plants","spider","winter"            //words Array needed for the task
                         ,"money","science","wonder","miss","tea"
                         , "finger","hour","empty","kind","song"
                         , "place","bird","fear","mute","week"};
     String word = words[new Random().nextInt(20)].toUpperCase();
     int[] id = new int[]{R.drawable.hangman0,R.drawable.hangman1,R.drawable.hangman2,R.drawable.hangman3,R.drawable.hangman4,R.drawable.hangman5,
             R.drawable.hangman6};
-    ArrayList<String> wrong_guesses=new ArrayList<String>();
+    ArrayList<String> wrong_guesses=new ArrayList<String>();                        //images for different stages and wrong guess List
 
     static final int MAX_WRONG  = 12;
     int cur_wrong = 0,cur_score=60,prev_high_score=0;
@@ -59,17 +59,17 @@ public class MainActivity extends AppCompatActivity {
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         prefE = pref.edit();
 
-        prev_high_score = pref.getInt("prevHighScore",0);
+        prev_high_score = pref.getInt("prevHighScore",0);               //restroing values from savedPreferences
         prevHigh.setText(String.valueOf(prev_high_score));
 
 
-        encrypt(word);
+        encrypt(word);                                                                 //method to encrypt the word into *s
 
-        check.setOnClickListener(new View.OnClickListener() {
+        check.setOnClickListener(new View.OnClickListener() {                          //method for reveal button click
             @Override
             public void onClick(View v) {
                 String current="";
-                try {
+                try {                                                                  //Try catch is used to handle button clicks when EditText is empty
                     String test = guess.getText().toString();
                     current = ques.getText().toString();
                     ques.setText("");
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        root.setOnLongClickListener(new View.OnLongClickListener() {
+        root.setOnLongClickListener(new View.OnLongClickListener() {                //long click refresh
             @Override
             public boolean onLongClick(View v) {
                 cur_score=60;curScore.setText(String.valueOf(cur_score));cur_wrong=0;
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0;i<word.length();i++)
             ques.append("*");
     }
-    public void reveal(String word,String test,String current){
+    public void reveal(String word,String test,String current){                 //reveal when present
         if(word.indexOf(test)==-1) {
             ques.setText(current);
             if (cur_score == 0) {
@@ -151,13 +151,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {                         //inflating options menu
         getMenuInflater().inflate(R.menu.menulist1,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {               //toggling options menu item
 
         Intent intent = new Intent(MainActivity.this,RulesActivity.class);
         startActivity(intent);
